@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="contenerdorMenu" maxHeight="373.0" maxWidth="272.0" prefHeight="373.0" prefWidth="272.0" style="-fx-border-color: green;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.Controlador.ControllerFXML.MenuTierraProtossController">
+   <children>
+      <HBox layoutX="43.0" layoutY="40.0" />
+      <Label layoutX="61.0" layoutY="30.0" text="Menu Moho Protoss">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="106.0" prefHeight="19.0" prefWidth="163.0" text="Los protoss no pueden" />
+      <Label layoutX="60.0" layoutY="127.0" text="construir sobre el moho" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+Supuestos:
+
+-Arranca el juegoModelo y en la raza zerg, tenemos un criadero si o si porque si no existe moho no tiene gracia el juegoModelo no podemos crear nada.
+-El criadero si o si necesita moho, al igual que las demas construcciones de zerg.
+
+Criadero inicialmente tiene radio moho 5.
+Cada dos turno suma en 1 radio moho.
+-CONFLICTO -Progresivamente Cada turno el radio moho aumenta 0.5 PUEDE SER?
+-Moho no lo tocamos si se destruye el moho.
+-Puede crear larvas y zanganos.
+
+
+Zanganos:
+1) Lo creamos de una usando el criadero ?
+2) Tambien puede evolucionar de la larva
+
+Zangano recolectinerales, solo hace una cosa a la vez.
+recoge 10 unidades de mineral turno.
+
+7-Nov-2022
+1. Cada criadero debe tener como maximo 3 larvas.
+2. Cada criadero que se construye empieza con 3 larvas.
+3. Es el criadero quien habilita tener un Zangano.
+4. Podemos miles de criaderos. se acabo.
+5. Cuando se quiere crear un nuevo criadero se tiene que esperarr 4 turnos y luego  el criadero
+    estar operativo y tendra sus 3 larvas inicales.
+6. Zangano se puede transforma en un nuevo criadero.
+7.
+8. suponer lo que queramos en vida.
+9. suponer el radio de moho. el moho crece y si esta encima esta dentro del area de la construccion.
+El moho son 5 celdas penciam de la edificacion. suponer compas.
+
+
+
+
+

@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Mapa{
+    -base:int
+    -altura:int
+    -mapa: Ubicacion
+
+    +Mapa(base: int, altura: int)
+    +buscar(unaCoordenada: Coordenada):Ubicacion
+    +buscar(unaCoordenada: Coordenada,radio: int):ArrayList
+    +buscarOpuesto(unaCoordenada):unaUbicacion
+    +inicializarMapa():void
+    +agregarBasesDiagonales():void
+
+
+}
+
+class Ubicacion{
+    -unEdificio: Edificio
+    -unRecurso: Recurso
+    -unaUnidad: Unidad
+    -unTipo: Tipo
+    -unaCoordenada: Coordenada
+    -arriba: Ubicacion
+    -abajo: Ubicacion
+    -derecha: Ubicacion
+    -izquierda: Ubicacion
+
+
+    +Ubicacion(coordenada: Coordenada)
+    +ubicar(unEdificio: Edificio):void
+    +desalojar(unMapa):void
+    +darTipo(unTipo):void
+    +distancia(unaUbicacion): unaDistancia
+    +coordenada():unaCoordenada
+    +crecer(unRadio,unMapa):void
+    +asignarUnidad(unaUnidad):void
+    +establecerEnRangoAmoSupremo():void
+    +energizar():void
+    +desenergizar():void
+    +energizado():boolean
+    +existeEdificio():boolean
+    +existeRecurso():boolean
+    +existeUnidad(): boolean
+    +esIgual(otraUbicacion Ubicacion): boolean
+
+}
+
+interface Tipo {
+    #unTiposuperficie:TIPOSUPERFICIE
+    +instalar(unEdificio):void
+    +crecer(unaCoordenada,unMapa,unRadio):void
+    +ubicar(unaUnidad):void
+    +getTiposuperficie():TIPOSUPERFICIE
+}
+
+class Tierra{
+     +Tierra()
+     +instalar(unEdificio):void
+     +crecer(unaCoordenada,unMapa,unRadio):void
+     +ubicar(unaUnidad):void
+}
+class Moho{
+     +Moho()
+     +instalar(unEdificio):void
+     +crecer(unaCoordenada,unMapa,unRadio):void
+     +ubicar(unaUnidad):void
+}
+class Especial{
+     +Especial()
+     +instalar(unEdificio):void
+     +crecer(unaCoordenada,unMapa,unRadio):void
+     +ubicar(unaUnidad):void
+}
+
+Mapa -> "n" Ubicacion
+Ubicacion -> Tipo
+Tierra ..> Tipo
+Moho ..> Tipo
+Especial ..> Tipo
+@enduml

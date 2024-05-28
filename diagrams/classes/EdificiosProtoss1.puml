@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class NexoMineral{
+    -CANTIDAD_EXTRACCION: int
+    -nodoMineral: NodoMineral
+
+    +NexoMineral(nodoMineral: NodoMineral, ubicacion: Ubicacion)
+    +extraer():GestionRecurso
+    +construirEdificioEn(recurso: Recurso): void
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +fueAgregado(raza: Raza): void
+    +instalar(tierra: Tierra)
+
+}
+
+class Pilon{
+    +Pilon(hp: HitPoints)
+    +energizar()
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +instalar(tierra: Tierra)
+    +fueAgregado(raza: Raza)
+    +disminuirCapacidad(unaRaza: Raza)
+    +desalojarPilon(unMapa: Mapa)
+}
+
+class Asimilador{
+    +Asimilador(ubicacion: Ubicacion)
+    +fueAgregado(raza: Raza)
+    +extraer(): GestionRecurso
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +fueAgregado(raza: Raza)
+    +instalar(tierra: Tierra)
+}
+
+
+
+interface Atacable {
+    +recibirAtaque(ataque: Ataque)
+}
+
+
+abstract class Edificio {
+        #turnosRestantesParaSerOperativo: Int
+        #ubicacion: Ubicacion
+        #costoMineral: int
+        #costoGas: int
+        #raza: Raza
+        -hp: HitPoints
+
+        +Edificio(turnosRestantesParaSerOperativo: Int,HP: HitPoints,mineralNecesario: Int,gasNecesario: Int)
+        +verififarEdificioOperativo()
+        +ejecutarTurno():void
+        +{abstract} construirEdificioEn(recurso: Recurso)
+        +{abstract} verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso)
+        + ubicar(unLugar:Ubicacion)
+        +recibirDaño(dano: Int)
+        +vidaActual():Int
+        + distancia(unaUbicacion: Ubicacion): int
+        + {abstract} fueAgregado(raza: Raza)
+        +ubicacion(): Ubicacion
+        +recibirAtaque(unAtaque: Ataque)
+        +{abstract} instalar(tierra: Tierra)
+        +disminuirCapacidad(unaRaza: Raza)
+}
+
+Edificio <|-- NexoMineral
+Edificio <|-- Pilon
+Edificio <|-- Asimilador
+Atacable <|.. Edificio
+@enduml

@@ -1,0 +1,89 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Edificio {
+    #turnosRestantesParaSerOperativo: Int
+    #ubicacion: Ubicacion
+    #entidad: IDEDIFICIO
+    #costoMineral: int
+    #costoGas: int
+    #raza: Raza
+    -hp: HitPoints
+
+    +Edificio(turnosRestantesParaSerOperativo: Int,HP: HitPoints,mineralNecesario: Int,gasNecesario: Int)
+    +verififarEdificioOperativo()
+    +ejecutarTurno():void
+    +{abstract} construirEdificioEn(recurso: Recurso)
+    +{abstract} verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso)
+    + ubicar(unLugar:Ubicacion)
+    +recibirDaño(dano: Int)
+    +vidaActual():Int
+    + distancia(unaUbicacion: Ubicacion): int
+    + {abstract} fueAgregado(raza: Raza)
+    +ubicacion(): Ubicacion
+    +recibirAtaque(unAtaque: Ataque)
+    +{abstract} instalar(moho: Moho)
+    +disminuirCapacidad(unaRaza: Raza)
+}
+
+class Extractor{
+
+    -zanganos: ArrayList
+
+    +Extractor()
+    +agregarZangano(zangano: Unidad)
+    +puedeAgregarZangano()
+    +extraer(recurso: Recurso): GestionRecurso
+    +evolucionarLarvaAHidra(larva : Larva)
+    +evolucionarLarvaAZerli(larva : Larva)
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +instalar(moho: Moho)
+    +evolucionarLarva()
+    +crearMutalisco()
+    +fueAgregado(raza: Raza)
+}
+
+class Espiral{
+
+    +Espiral()
+    +agregarZangano(unZangano: Unidad)
+    +extraer(unREcurso: Recurso): GestionRecurso
+    +evolucionarLarvaAHidra(unaLarva: Larva)
+    +evolucionarLarvaAZerli(unaLarva: Larva)
+    +crearMutalisco()
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +fueAgregado(raza: Raza)
+    +instalar(moho: moho)
+    +evolucionarLarva()
+}
+
+class Guarida{
+
+    +Guarida(hp: HitPoints)
+    +evolucionarLarvaAHidra(unaLarva: Larva)
+    +evolucionarLarvaAZerli(unaLarva: Larva)
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +fueAgregado(raza: Raza)
+    +instalar(tierra: Tierra)
+    +instalar(moho: Moho)
+    +evolucionarLarva()
+    +crearMutalisco()
+    +agregarZangano(zangano: Unidad)
+    +extraer(recurso: Recurso): GestionRecurso
+
+
+
+}
+interface Atacable {
+    +recibirAtaque(ataque: Ataque)
+}
+
+Edificio <|-- Extractor
+Edificio <|-- Espiral
+Edificio <|-- Guarida
+Atacable <|.. Edificio
+
+@enduml

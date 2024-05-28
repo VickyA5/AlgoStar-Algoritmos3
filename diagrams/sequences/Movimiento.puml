@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+TestCase --> "unaUnidad:Unidad": moverseArriba()
+"unaUnidad:Unidad" --> "ubicacionVieja:Ubicacion": getArriba()
+"ubicacionVieja:Ubicacion" --> "unaUnidad:Unidad": ubicacionArriba
+"unaUnidad:Unidad" --> "ubicacionVieja:Ubicacion": esiguala(ubicacionArriba)
+"ubicacionVieja:Ubicacion" ->> "unaUnidad:Unidad": false
+"unaUnidad:Unidad" --> "ubicacionArriba:Ubicacion": asignarUnidad(unaUnidad)
+"unaUnidad:Unidad" --> "ubicacionVieja:Ubicacion": quitarUnidad()
+@enduml

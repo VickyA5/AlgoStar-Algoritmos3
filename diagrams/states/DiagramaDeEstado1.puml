@@ -1,0 +1,16 @@
+@startuml
+hide empty description
+[*] --> solicitarConstruccionZerg
+solicitarConstruccionZerg -> pedirUbicacion
+pedirUbicacion -> PedirInfoUbicacion
+state c <<choice>>
+PedirInfoUbicacion -> c
+c --> rechazarSolicitud : tierra
+rechazarSolicitud --> [*]
+c --> aceptarSolicitud : moho
+aceptarSolicitud --> agregarAUbicacion
+agregarAUbicacion --> actualizarMapa
+actualizarMapa -->[*]
+
+
+@enduml

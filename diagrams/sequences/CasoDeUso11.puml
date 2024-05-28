@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+jugador -> Edificio: recibirDaño(30)
+Edificio -> HitPoints: recibirDaño(30)
+group 10 veces
+    jugador -> Edificio: ejecutar turno
+end
+
+jugador -> Edificio: vidaActual
+Edificio -> HitPoints: vida()
+HitPoints -> Edificio: vidaMaxima
+Edificio -> jugador: vidaActual
+
+jugador -> Edificio: escudoActual
+Edificio -> HitPoints: escudo()
+HitPoints -> Edificio: escudoMaximo
+Edificio -> jugador: escudoActual
+
+@enduml

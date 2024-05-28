@@ -1,0 +1,104 @@
+@startuml
+abstract  class Unidad{
+   Unidad(tipoSuperficie:TipoSuperficie, ataque: Ataque)
+   + recibirDanio(ataque:Ataque): void
+   + atacar(atacable: Atacable): void
+}
+note left of Unidad::recibirDanio
+  tipoSuperficie.recibirAtaque(ataque);
+end note
+note left of Unidad::atacar
+  atacable.recibirDanio(ataque);
+end note
+
+
+
+interface TipoSuperficie {
+   + {abstract} recibirAtaque(ataque: Ataque, hp: HitPoints): void
+}
+
+class TipoAire implements TipoSuperficie{
+   +  recibirAtaque(ataque: Ataque, hp: HitPoints): void
+}
+note left of TipoAire::recibirAtaque
+  ataque.aplicarDanioViento(hp)
+end note
+
+class TipoTierra implements TipoSuperficie{
+   +  recibirAtaque(ataque: Ataque, hp: HitPoints): void
+}
+note left of TipoTierra::recibirAtaque
+  ataque.aplicarDanioTierra(hp)
+end note
+
+
+class Mutalisco {
+   + Mutalisco()
+}
+note left of Mutalisco::Mutalisco
+  git
+end note
+
+
+
+interface Atacable {
+   + {abstract} recibirDanio(ataque:Ataque): void
+}
+
+interface Atacante {
+   + {abstract} atacar(atacable: Atacable): void
+}
+
+abstract class Ataque {
+   -danioTierra: int
+   + Ataque(danioTierra: int)
+   + aplicarDanioTierra(hp:HitPoint)
+   + {abstract} aplicarDanioViento(hp:HitPoint)
+}
+
+class AtaqueSoloTierra {
+    AtaqueTierra(danioTierra: int)
+
+   +  aplicarDanioViento(hp:HitPoint)
+}
+note right of AtaqueSoloTierra::aplicarDanioViento
+  throw new Exception()
+end note
+
+
+class AtaqueTierraYViento {
+    - danioViento: int
+    + AtaqueTierraViento(danioTierra: int, danioViento: int)
+
+   +  aplicarDanioViento(hp:HitPoint)
+}
+note left of AtaqueTierraYViento::aplicarDanioViento
+  hp.recibirDaño(danioVIento)
+end note
+
+
+
+interface HitPoints {
+
+    + recibirDaño(int daño): void
+    + regenerar(): void
+    + vida(): int
+    + escudo(): int
+
+}
+
+
+Atacable <|.. Unidad
+
+Atacante <|.. Unidad
+
+Ataque <|-- AtaqueSoloTierra
+Ataque <|-- AtaqueTierraYViento
+
+
+Unidad <|-- Mutalisco
+Unidad --> HitPoints
+Unidad --> Ataque
+Unidad --> TipoSuperficie
+
+@enduml

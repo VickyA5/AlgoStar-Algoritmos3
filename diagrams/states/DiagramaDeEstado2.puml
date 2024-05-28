@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+[*] --> solicitarUnidadVoladora
+solicitarUnidadVoladora -> pedirUnidad
+pedirUnidad -> PedirInfoUnidad
+state c <<choice>>
+PedirInfoUnidad --> c
+c --> rechazarUnidad : terrestre
+rechazarUnidad -> [*]
+c -> aceptarUnidad : voladora
+aceptarUnidad -> agregarAUbicacion
+agregarAUbicacion -> [*]
+
+@enduml

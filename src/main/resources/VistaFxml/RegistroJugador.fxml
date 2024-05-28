@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="931.0" prefWidth="970.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.Controlador.ControllerFXML.RegistroJugadorControlador">
+   <children>
+      <Pane layoutX="247.0" layoutY="65.0" prefHeight="801.0" prefWidth="462.0">
+         <children>
+            <Label fx:id="lblTitle" layoutX="104.0" layoutY="81.0" text="Registro del Jugador ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtNombre" layoutX="276.0" layoutY="221.0" promptText="Escriba su nombre" />
+            <Label layoutX="53.0" layoutY="218.0" text="Nombre">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="314.0" text="Color">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbColor" layoutX="275.0" layoutY="314.0" prefWidth="150.0" promptText="Elija un color" />
+            <RadioButton layoutX="59.0" layoutY="585.0" mnemonicParsing="false" text="Protoss">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tgRaza" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="350.0" layoutY="585.0" mnemonicParsing="false" text="Zerg" toggleGroup="$tgRaza" />
+            <Label layoutX="144.0" layoutY="422.0" text="Seleccione una raza">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnContinuar" layoutX="188.0" layoutY="689.0" mnemonicParsing="false" onAction="#onPressContinuar" text="Continuar">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

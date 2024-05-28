@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+user -> NodoMineral: new()
+NodoMineral -> user: unNodoMineral
+user -> NexoMineral: new(unNodoMineral)
+NexoMineral -> user: unNexoMIneral
+
+group 2 turnos
+    user -> "unNexoMineral:NexoMIneral": ejecutarTurno
+end
+
+user -> "unNexoMineral:NexoMIneral":extraer()
+"unNexoMineral:NexoMIneral" -> user: EdificioNoOperativo()
+
+group 2 turnos
+    user -> "unNexoMineral:NexoMIneral": ejecutarTurno
+end
+
+user -> "unNexoMineral:NexoMIneral":extraer()
+
+
+
+@enduml

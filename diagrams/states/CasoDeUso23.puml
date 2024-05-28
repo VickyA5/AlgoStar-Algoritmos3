@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+[*] --> solicitarUnidadZerling
+solicitarUnidadZerling --> PedirDistanciaUnidad
+[*] --> solicitarUnidadAtacada
+solicitarUnidadAtacada --> PedirDistanciaUnidad
+state c <<choice>>
+PedirDistanciaUnidad --> c
+c --> rechazarDistancia : fueraDelRango
+rechazarDistancia -> [*]
+c -> aceptarDistancia : enRango
+aceptarDistancia -> zerlingAtacarAAtacada
+zerlingAtacarAAtacada -> [*]
+
+@enduml

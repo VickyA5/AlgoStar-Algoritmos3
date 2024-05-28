@@ -1,0 +1,11 @@
+@startuml
+
+autonumber
+":jugador" -> ":Criadero": evolucionarLarva()
+":Criadero" -> ":Criadero": verififarEdificioOperativo()
+":Criadero" -> ":Criadero": sacarLarva()
+":Criadero" -> "larbaSacada:Larva": evolucionar()
+return new Zangano()
+":Criadero" --> ":jugador": zangano
+
+@enduml

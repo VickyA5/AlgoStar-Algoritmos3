@@ -1,0 +1,25 @@
+@startuml
+
+title testNoSeDeberiaPoderConstruirFueraDelRangoDelPilon (Caso de uso 5)
+
+create ":TestCase"
+create "mapa:Mapa"
+":TestCase" -> "mapa:Mapa":Mapa(10,10)
+create "coord:Coordenada"
+":TestCase" -> "coord:Coordenada":Coordenada(1,1)
+":TestCase" -> "mapa:Mapa":buscar(coord)
+return ubicacionPilon
+create "pilon:Pilon"
+":TestCase" -> "pilon:Pilon":Pilon()
+create "ubicacionPilon:Ubicacion"
+":TestCase" -> "ubicacionPilon:Ubicacion":ubicar(pilon, mapa)
+create "coord2:Coordenada"
+":TestCase" -> "coord2:Coordenada":Coordenada(5,5)
+":TestCase" -> "mapa:Mapa":buscar(coord2)
+return ubicacionPuerto
+create "a:Acceso"
+":TestCase" -> "a:Acceso":Acceso(ubicacionPuerto)
+"a:Acceso" --> ":TestCase": throw new ConstruccionFueraDelRangoPilonError
+
+
+@enduml

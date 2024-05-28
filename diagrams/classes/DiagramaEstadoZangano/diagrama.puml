@@ -1,0 +1,132 @@
+@startuml
+interface EstadoZangano{
++{abstract} evolucionarLarva():Zangano
++{abstract} agregarseAEstaRaza(raza:RazaZerg):void
++{abstract} crearMutalisco():Mutalisco
++{abstract} ejecutarTurno():void
++{abstract} agregarZangano(zangano:Zangano):void
++{abstract} extraer(recurso:Recurso):GestionRecurso
++{abstract} evolucionarLarvaAHidra(larva:Larva):Hidralisco
++{abstract} evolucionarLarvaAZerli(larva:Larva):Zerling
+
+}
+class Criadero{
+    +Criadero()
+    +Criadero(cantidadTurnosParaSerOperativo: Int)
+    +ejecutarTurno(): void
+    +agregarZangano(zangano: Unidad): void
+    +extraer(recurso: Recurso): GestionRecurso
+    +evolucionarLarvaAHidra(larva: Larva): Hidralisco
+    +evolucionarLarvaAZerli(larva: Larva): Zerling
+    +evolucionarLarva(): Zangano
+    +agregarseAEstaRaza(razaZerg: RazaZerg): void
+    +equals(object: Object): boolean
+    +tieneMismaCantidad(size: Int): boolean
+    +ejecutarTurnoRegenerar(): void
+    -cargarTodaslasLarvas(): void
+    +construirEdificioEn(recurso: Recurso): void
+    +verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso): void
+    +instalar(tierra: Tierra): void
+    +instalar(moho: Moho): void
+    +crearMutalisco(): Mutalisco
+    +disminuirCapacidad(unaRaza: Raza): void
+    +getCantidadLarvas(): Int
+    + fueAgregado(raza: Raza): void
+
+}
+
+class Espiral{
+    +Espiral()
+    +agregarZangano(unZangano: Unidad):void
+    +extraer(unREcurso: Recurso): GestionRecurso
+    +evolucionarLarvaAHidra(unaLarva: Larva): Hidralisco
+    +evolucionarLarvaAZerli(unaLarva: Larva): Zerling
+    +crearMutalisco(): Mutalisco
+    +construirEdificioEn(recurso: Recurso): void
+    +verificarSiPuedeSerConstruido(unidadesDeMineral: GestionRecurso, unidadesDeGas: GestionRecurso): void
+    +fueAgregado(raza: Raza): void
+    +instalar(tierra: Tierra): void
+    +instalar(moho: moho): void
+    +evolucionarLarva():Zangano
+    +agregarseAEstaRaza(razaZerg: RazaZerg) void
+}
+class Extractor{
+
+    +Extractor()
+    +agregarZangano(zangano: Unidad): void
+    +extraer(recurso: Recurso): GestionRecurso
+    +evolucionarLarvaAHidra(larva : Larva):Hidralisco
+    +evolucionarLarvaAZerli(larva : Larva):Zerling
+    +construirEdificioEn(recurso: Recurso):void
+    +verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso): void
+    +instalar(moho: Moho): void
+    +evolucionarLarva(): Zangano
+    +agregarseAEstaRaza(razaZerg: RazaZerg): void
+    +crearMutalisco():void
+    + fueAgregado(raza: Raza): void
+    -verificarExtractorCantidadMaximaDeZanganos():void
+}
+
+class Guarida{
+    +Guarida()
+    +Guarida(hp: HitPoints)
+    +evolucionarLarvaAHidra(unaLarva: Larva): Hidralisco
+    +evolucionarLarvaAZerli(unaLarva: Larva): Zerling
+    +construirEdificioEn(recurso: Recurso): void
+    +verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso): void
+    +fueAgregado(raza: Raza): void
+    +instalar(tierra: Tierra): void
+    +instalar(moho: Moho): void
+    +evolucionarLarva(): Zangano
+    +agregarseAEstaRaza(razaZerg: RazaZerg): void
+    +crearMutalisco(): Mutalisco
+    +agregarZangano(zangano: Unidad): void
+    +extraer(recurso: Recurso): GestionRecurso
+}
+class ReservaDeReproduccion{
+    +ReservaDeReproduccion()
+    +evolucionarLarvaAZerli(larva: Larva):Zerling
+    +evolucionarLarva(): Zangano
+    +construirEdificioEn(recurso: Recurso): void
+    +verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso): void
+    +ejecutarTurno():void
+    + fueAgregado(raza: Raza): void
+    +instalar(tierra: Tierra): void
+    +instalar(moho: Moho): void
+    +crearZerling(larva: Larva): void
+    +agregarseAEstaRaza(razaZerg: RazaZerg)
+    +crearMutalisco(): Mutalisco
+    +agregarZangano(zangano: Unidad): void
+    +extraer(recurso: Recurso): GestionRecurso
+    + volucionarLarvaAHidra(larva: Larva): Hidralisco
+}
+
+class Zangano{
++Zangano()
++Zangano(vida: HitPoints)
++evolucionarLarva():Zangano
++crearMutalisco():Mutalisco
++ejecutarTurno():void
++agregarZangano(zangano:Zangano):void
++extraer(recurso:Recurso):GestionRecurso
++evolucionarLarvaAHidra(larva:Larva):Hidralisco
++evolucionarLarvaAZerli(larva:Larva):Zerling
++extraerMineral(unNodoMineral: NodoMineral): GestionRecurso
++verificarEstadoLibreZangano()
++mutarCriadero(raza:RazaZerg)
++mutarEspiral(raza:RazaZerg)
++mutarExtractor(raza:RazaZerg)
++equals(object: Object): boolean
++mutarGuarida(raza:RazaZerg)
++mutarReservaReproduccion(raza:RazaZerg)
+}
+
+EstadoZangano <|.. Criadero
+EstadoZangano <|.. Espiral
+EstadoZangano <|.. Extractor
+EstadoZangano <|.. Guarida
+EstadoZangano <|.. ReservaDeReproduccion
+Zangano *- EstadoZangano
+
+
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+package Java{}
+
+package edu.fiuba.algo3{}
+
+package Vista{
+    package Contenedor{}
+    package Botones{}
+    package resources{}
+    }
+
+package Controlador{
+    class Juego
+    package EventHandler{}
+    package FXMLController{}
+
+    }
+
+package  Modelo{
+
+    package Edificio {}
+    package Unidad {}
+    package Ataque {}
+
+    package Raza {
+        class Zerg
+        class Protos
+        }
+
+    package Tablero {}
+
+
+    package Excepciones {
+        class Excepciones
+        }
+    }
+
+package Excepciones {
+    class Excepciones
+    }
+
+Java --> edu.fiuba.algo3
+edu.fiuba.algo3 --> Modelo
+edu.fiuba.algo3 --> Vista
+edu.fiuba.algo3 --> Controlador
+EventHandler -> Juego
+Juego --> Modelo
+Contenedor --> Edificio
+Contenedor --> Unidad
+
+
+@enduml

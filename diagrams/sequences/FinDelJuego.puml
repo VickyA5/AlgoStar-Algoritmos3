@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+title Raza Protoss gana
+"TestCase:" -> "unJuego: JuegoModelo": zergsNoPuedenJugarMas()
+"unJuego: JuegoModelo" -> ":Raza": PuedoSeguirJugando()
+":Raza" --> "unJuego: JuegoModelo": true
+"unJuego: JuegoModelo" --> "TestCase:": true
+
+
+@enduml

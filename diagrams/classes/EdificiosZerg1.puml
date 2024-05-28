@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Edificio {
+    #turnosRestantesParaSerOperativo: Int
+    #ubicacion: Ubicacion
+    #entidad: IDEDIFICIO
+    #costoMineral: int
+    #costoGas: int
+    #raza: Raza
+    -hp: HitPoints
+
+    +Edificio(turnosRestantesParaSerOperativo: Int,HP: HitPoints,mineralNecesario: Int,gasNecesario: Int)
+    +verififarEdificioOperativo()
+    +ejecutarTurno():void
+    +{abstract} construirEdificioEn(recurso: Recurso)
+    +{abstract} verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso)
+    +ubicar(unLugar:Ubicacion)
+    +recibirDaño(dano: Int)
+    +vidaActual():Int
+    +distancia(unaUbicacion: Ubicacion): int
+    +{abstract} fueAgregado(raza: Raza)
+    +ubicacion(): Ubicacion
+    +recibirAtaque(unAtaque: Ataque)
+    +{abstract} instalar(moho: Moho)
+    +disminuirCapacidad(unaRaza: Raza)
+}
+
+class Criadero{
+    -larvas: ArrayList
+
+    +Criadero(cantidadTurnosParaSerOperativo: Int)
+    +ejecutarTurno()
+    +agregarZangano(zangano: Unidad)
+    +extraer(recurso: Recurso): GestionRecurso
+    +evolucionarLarvaAHidra(larva: Larva)
+    +evolucionarLarvaAZerli(larva: Larva)
+    +evolucionarLarva()
+    +equals(object: Object): boolean
+    +tieneMismaCantidad(size: Int): boolean
+    +ejecutarTurnoRegenerar()
+    -cargarTodaslasLarvas()
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +instalar(tierra: Tierra)
+    +instalar(moho: Moho)
+    +crearMutalisco()
+    +disminuirCapacidad(unaRaza: Raza)
+    +fueAgregado(raza: Raza)
+}
+
+class ReservaDeReproduccion{
+
+    +ReservaDeReproduccion()
+    +evolucionarLarvaAZerli(larva: Larva)
+    +evolucionarLarva()
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +fueAgregado(raza: Raza)
+    +instalar(tierra: Tierra)
+    +instalar(moho: Moho)
+    +crearMutalisco()
+    +agregarZangano(zangano: Unidad)
+    +extraer(recurso: Recurso): GestionRecurso
+    + evolucionarLarvaAHidra(larva: Larva)
+
+}
+
+interface Atacable {
+    +recibirAtaque(ataque: Ataque)
+}
+
+Edificio <|-- Criadero
+Edificio <|-- ReservaDeReproduccion
+Atacable <|.. Edificio
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+mainframe Mutalisco evoluciona a Devorador con los recursos necesarios
+activate ":Testcase"
+autonumber
+skinparam sequenceMessageAlign center
+
+
+":Testcase" -> "razaZerg:RazaZerg" **: <<create>>\n new RazaZerg()
+activate "razaZerg:RazaZerg"
+":Testcase" -> "mineral:GestionRecurso" **: <<create>>\n new GestionRecurso(500)
+
+":Testcase" -> "razaZerg:RazaZerg" : aumentarMineral(mineral)
+":Testcase" -> "gas:GestionRecurso" **: <<create>>\n new GestionRecurso(500)
+":Testcase" -> "razaZerg:RazaZerg" : aumentarGas(gas)
+":Testcase" -> ":Mutalisco" **: <<create>>\n new Mutalisco()
+":Testcase" -> ":Mutalisco" : evolucionarDevorador(razaZerg)
+activate ":Mutalisco"
+":Mutalisco" -> "devorador:Devorador" **: <<create>>\n new Devorador()
+":Mutalisco" -> ":Mutalisco" : tipoEvolucionDeMutalisco = devorador
+":Mutalisco" -> "razaZerg:RazaZerg" : agregarUnidad((Unidad) tipoEvolucionDeMutalisco);
+activate "razaZerg:RazaZerg"
+":Mutalisco" -> "razaZerg:RazaZerg" : agregarUnidad((Unidad) tipoEvolucionDeMutalisco);
+"razaZerg:RazaZerg" -> ":Mutalisco" : verificarConsumoRecurso(mineral,gas)
+"razaZerg:RazaZerg" -> ":Mutalisco" : consumirGas(gas)
+"razaZerg:RazaZerg" -> ":Mutalisco" : consumirMineral(mineral)
+"razaZerg:RazaZerg" -> "razaZerg:RazaZerg" : add(tipoEvolucionDeMutalisco)
+deactivate ":Mutalisco"
+deactivate "razaZerg:RazaZerg"
+@enduml

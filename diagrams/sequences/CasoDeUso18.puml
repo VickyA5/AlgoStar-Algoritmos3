@@ -1,0 +1,18 @@
+@startuml
+mainframe Un Hidralisco Operativo Ataca A Un Zealot y le Deberia Causar 10 Danio
+autonumber
+actor "actor"
+activate "actor"
+skinparam sequenceMessageAlign center
+
+
+"actor" -> "hidralisco:Hidralisco" : atacar(zealot);
+"hidralisco:Hidralisco" -> "hidralisco:Hidralisco" : verificarUnidadOperativa()
+"hidralisco:Hidralisco" -> "zealot:Zealot" : recibirAtaque(ataque)
+"zealot:Zealot" -> ":TipoTierra" : recibirAtaque(ataque,hp)
+":TipoTierra" --> "ataque:AtaqueSoloTierra" : aplicarDanioTierra(hp)
+"ataque:AtaqueSoloTierra" -> "hp:HPProtoss" : recibirDaño(10)
+
+
+
+@enduml

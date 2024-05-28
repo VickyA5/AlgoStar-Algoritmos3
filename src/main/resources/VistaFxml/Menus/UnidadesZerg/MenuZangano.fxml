@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="contenerdorMenu" maxHeight="444.0" maxWidth="272.0" prefHeight="444.0" prefWidth="272.0" style="-fx-border-color: green;" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.Controlador.ControllerFXML.MenuZanganoController">
+   <children>
+      <HBox layoutX="43.0" layoutY="40.0" />
+      <Label layoutX="69.0" layoutY="19.0" text="Menu Zangano Zerg">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Pane layoutX="108.0" layoutY="54.0">
+         <children>
+            <Button fx:id="btnMutarACriadero" disable="true" layoutX="44.0" mnemonicParsing="false" onMouseClicked="#onClickedMutarACriadero" text="Criadero" />
+            <Button fx:id="btnMutarAReserva" disable="true" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onClickedMutarAReservaDeReproduccion" text="Reserva de Reproducción" />
+            <Button fx:id="btnMutarAEspiral" disable="true" layoutX="49.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#onClickedMutarAEspiral" text="Espiral" />
+            <Button fx:id="btnMutarAGuarida" disable="true" layoutX="45.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#onClickedMutarAGuarida" text="Guarida" />
+            <Button fx:id="btnMutarExtractor" disable="true" layoutX="42.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#onClickedMutarExtractor" text="Extractor" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneMovimiento" layoutX="74.0" layoutY="329.0" prefHeight="82.0" prefWidth="124.0">
+         <children>
+            <Button layoutX="49.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#onClickedMoverAbajo" text="▼" />
+            <Button layoutX="49.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#onClickedMoverArriba" rotate="180.0" text="▼" />
+            <Button layoutX="23.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#onClickedMoverIzquierda" rotate="90.0" text="▼" />
+            <Button layoutX="75.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#onClickedMoverDerecha" rotate="-90.0" text="▼" />
+         </children>
+      </Pane>
+      <Label layoutX="108.0" layoutY="300.0" text="Moverse">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="105.0" text="Mutar en:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnExtraerMineral" disable="true" layoutX="86.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#onClickedExtraerMineral" text="Extraer Mineral" />
+      <Button fx:id="btnEntrarEnExtractor" disable="true" layoutX="76.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#onClickedEntrarEnExtractor" text="Entrar en Extractor" />
+      <Pane layoutX="57.0" layoutY="273.0">
+         <children>
+            <Label fx:id="lblTextMineralRestante" layoutX="-8.0" text="Mineral restante en el nodo: " visible="false" />
+            <Label fx:id="lblCantidadMineralNodo" layoutX="166.0" text="0" visible="false" />
+         </children>
+      </Pane>
+      <Label layoutX="104.0" layoutY="195.0" text="Acciones">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

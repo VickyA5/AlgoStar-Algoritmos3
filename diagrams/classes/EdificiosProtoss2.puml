@@ -1,0 +1,66 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Edificio {
+
+        #turnosRestantesParaSerOperativo: Int
+        #ubicacion: Ubicacion
+        #entidad: IDEDIFICIO
+        #costoMineral: int
+        #costoGas: int
+        #raza: Raza
+        -hp: HitPoints
+
+        +Edificio(turnosRestantesParaSerOperativo: Int,HP: HitPoints,mineralNecesario: Int,gasNecesario: Int)
+        +verififarEdificioOperativo()
+        +ejecutarTurno():void
+        +{abstract} construirEdificioEn(recurso: Recurso)
+        +{abstract} verificarSiPuedeSerConstruido(unidadesDeMineral:GestionRecurso, unidadesDeGas:GestionRecurso)
+        + ubicar(unLugar:Ubicacion)
+        +recibirDaño(dano: Int)
+        +vidaActual():Int
+        + distancia(unaUbicacion: Ubicacion): int
+        + {abstract} fueAgregado(raza: Raza)
+        +ubicacion(): Ubicacion
+        +recibirAtaque(unAtaque: Ataque)
+        +{abstract} instalar(moho: Moho)
+        +disminuirCapacidad(unaRaza: Raza)
+
+
+}
+
+class Acceso{
+    -COSTO_GAS: int
+    -COSTO_MINERAL:int
+
+    +Acceso(ubicacion: Ubicacion)
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +instalar(tierra: Tierra): void
+    +instalar(moho: Moho): void
+    +crearZealot(): void
+    +crearDragon(): void
+    +ubicar(unLugar: Ubicacion): void
+    +fueAgregado(raza: Raza): void
+}
+
+class PuertoEstelar{
+
+    +PuertoEstelar()
+    +construirEdificioEn(recurso: Recurso)
+    +verificarSiPuedeSerConstruido(unidadesDeMineral, unidadesDeGas)
+    +instalar(tierra: Tierra): void
+    +instalar(moho: Moho): void
+    +crearScout(): void
+    +ubicar(unLugar: Ubicacion): void
+    +fueAgregado(raza: Raza): void
+}
+
+interface Atacable {
+    +recibirAtaque(ataque: Ataque)
+}
+
+Edificio <|-- Acceso
+Edificio <|-- PuertoEstelar
+Atacable <|.. Edificio
+@enduml

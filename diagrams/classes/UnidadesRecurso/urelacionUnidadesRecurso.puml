@@ -1,0 +1,75 @@
+@startuml
+
+
+class GestionRecurso{
+   - unidadesRecurso: UnidadesRecurso
+   + consumir(cantidad: int): void
+   + puedeConsumir(cantidad: int): boolean
+   + aumentar(unidadesGestionRecurso: UnidadesGestionRecurso): void
+
+}
+note left of GestionRecurso::consumir
+  unidadesRecurso.extraer(cantidad);
+end note
+
+
+class ExtraccionRecurso{
+   - unidadesRecurso: UnidadesRecurso
+   + extraer(cantidad: int): GestionRecurso
+}
+note right of ExtraccionRecurso::extraer
+  try{
+     unidadesRecurso.extraer(cantidad);
+     return
+  }
+  catch(e: UnidadesInsuficientes){
+     return unidadesRecurso.extraerTodo();
+  }
+
+end note
+
+
+
+
+
+class UnidadesRecurso{
+   - cantidad: int
+   + UnidadesRecurso(cantidad: int)
+   + extraer(cantidad: int): GestionRecurso
+   + extraerTodo(): GestionRecurso
+   + puedeExtraer(cantidad:int): boolean
+   + aumentar(u: UnidadesRecurso): void
+}
+note left of UnidadesRecurso::extraer
+  if(this.puedeExtraer(cantidad)){
+      throw new UnidadesInsuficientes();
+  }
+
+  this.cantidad -= cantidad
+  return new UnidadesGestionRecurso(cantidad);
+end note
+
+note left of UnidadesRecurso::extraerTodo
+  UnidadesRecurso retorno = new UnidadesGestionRecurso(cantidad);
+  cantidad = 0;
+  return retorno;
+end note
+
+note left of UnidadesRecurso::puedeExtraer
+   return this.cantidad >= cantidad;
+end note
+
+
+
+note left of UnidadesRecurso::aumentar
+  this.cantidad += u.cantidad;
+  u.cantidad = 0;
+end note
+
+UnidadesRecurso <-- GestionRecurso
+UnidadesRecurso <-- ExtraccionRecurso
+
+ExtraccionRecurso ..> GestionRecurso
+UnidadesRecurso ..> GestionRecurso
+
+@enduml

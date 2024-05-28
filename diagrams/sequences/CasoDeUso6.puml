@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+title construccion Criadero con crecimiento de Moho al inicio de la partida
+autonumber
+create "TestCase"
+create "mapa:Mapa"
+"TestCase" -> "mapa:Mapa": Mapa(10, 10)
+create "coordenadaMoho:Coordenada"
+"TestCase" -> "coordenadaMoho:Coordenada": Coordenada(5, 5)
+"TestCase" -> "mapa:Mapa": buscar(coordenadaMoho)
+"mapa:Mapa" --> "TestCase": ubicacionMoho
+create "moho:Moho"
+"TestCase" -> "moho:Moho": Moho()
+create "ubicacionMoho:Ubicacion"
+"TestCase" -> "ubicacionMoho:Ubicacion":darTipo(moho)
+"TestCase" -> "ubicacionMoho:Ubicacion":crecer(1, mapa)
+create "coordenadaCriadero:Coordenada"
+"TestCase" -> "coordenadaCriadero:Coordenada":Coordenada(4, 5)
+"TestCase" -> "mapa:Mapa": buscar(coordenadaCriadero)
+"mapa:Mapa" --> "TestCase": ubicacionCriadero
+create "criadero:Criadero"
+"TestCase" -> "criadero:Criadero": Criadero()
+
+
+create "ubicacionCriadero:Ubicacion"
+"TestCase" -> "ubicacionCriadero:Ubicacion":ubicar(criadero)
+"ubicacionCriadero:Ubicacion" --> "TestCase":throw new assertDoesNotThrow()
+
+
+
+
+
+@enduml

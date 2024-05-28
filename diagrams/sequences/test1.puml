@@ -1,0 +1,102 @@
+@startuml
+
+class NodoMineral {
+-unidadesDeMineral
++ extraer()
+}
+
+class Volcan{
+-unidadesDeGas
+  +extraer()
+}
+
+abstract class Construccion {
+-costo
+-tiempoDeConstruccion: Int
+-vida: Int
++regenerarVida()
+}
+
+class Juego {
+
++iniciarJuego()
++finalizarJuego()
+}
+abstract class Recurso {
+-unidadTotal:int
+ {abstract} +extraer()
+}
+
+abstract class ConstruccionZerg {
+
++regenerarVida()
+}
+
+class Criadero{
+
+}
+
+class Extractor{
+
+}
+
+class ReservaDeReproduccion{
+
+}
+
+class Guarida{
+
+}
+
+class Espiral{
+
+}
+
+ConstruccionZerg <|-- Criadero
+ConstruccionZerg <|-- Extractor
+ConstruccionZerg <|-- ReservaDeReproduccion
+ConstruccionZerg <|-- Guarida
+ConstruccionZerg <|-- Espiral
+
+abstract class ConstruccionProtoss {
+-escudo: Int
++regenerarEscudo()
+}
+
+class NexoMineral{
+
+}
+
+class Pilon{
+
+}
+
+class Asimilador{
+
+}
+
+class Acceso{
+
+}
+
+class PuertoEstelar{
+
+}
+
+ConstruccionProtoss <|-- NexoMineral
+ConstruccionProtoss <|-- Pilon
+ConstruccionProtoss <|-- Asimilador
+ConstruccionProtoss <|-- Acceso
+ConstruccionProtoss <|-- PuertoEstelar
+
+
+Construccion <|-- ConstruccionProtoss
+Construccion <|-- ConstruccionZerg
+Juego o-- Construccion
+Juego o-- Recurso
+Recurso <|-- Volcan
+Recurso <|-- NodoMineral
+
+
+
+@enduml
